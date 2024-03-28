@@ -85,7 +85,6 @@ id | Dungeon name | Название данжа
 3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 3206 | Crimson Killing Grounds | Окровавленное место казни
-3739 | Red Refuge | Лагерь повстанцев
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
@@ -103,6 +102,7 @@ id | Dungeon name | Название данжа
 9716 | Sky Cruiser Endeavor | Крейсер "Стремление"
 9720 | Antaroth's Abyss | Омут Антароса
 9735 | RK-9 Kennel | Ангар RK-9
+9739 | Red Refuge | Лагерь повстанцев
 9754 | Bathysmal Rise | Глубинный Храм
 9756 | Timescape | Хроноплоскость
 9757 | Akeron's Inferno | Акероново пекло
@@ -123,6 +123,7 @@ id | Dungeon name | Название данжа
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
+9994 | Thaumetal Refinery (Hard) | Лаборатория Альфа-сайрекса
 
 ## Notices settings / Настройка уведомлений
 
