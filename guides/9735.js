@@ -120,7 +120,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "point", args: [553, 340, 210, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 350, 210, 0, 290, 0, 3000] }
 		],
-		"s-735-3000-129-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
+		"s-735-3000-128-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1000 }],
 		"s-735-3000-305-0": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 300, 0, 7000] }],
 		"s-735-3000-321-0": [{ type: "text", sub_type: "message", message: "Shield!", message_RU: "Щит!" }],
 		"s-735-3000-324-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }]
