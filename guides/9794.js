@@ -58,7 +58,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-794-3000-112-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейф" }],
 		"s-794-3000-113-0": [{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)" }],
 		"s-794-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (от него)" }],
-		"s-794-3000-122-0": [{ type: "text", sub_type: "message", message: "Donut (Target)", message_RU: "Бублик (таргет)" }],
+		"s-794-3000-122-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!" }],
 		"s-794-3000-125-0": [{ type: "text", sub_type: "message", message: "Bait (Puddle)", message_RU: "Байт (лужа)" }],
 		"s-794-3000-315-0": [
 			{ type: "text", sub_type: "message", message: "Remove puddles from paths", message_RU: "Отвести лужи от дорожек" },

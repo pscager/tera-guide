@@ -66,8 +66,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-994-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (от него)" }],
 		"s-994-3000-116-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-994-3000-118-0": [{ type: "text", sub_type: "message", message: "Back", message_RU: "Удар назад" }],
-		"s-994-3000-122-0": [{ type: "text", sub_type: "message", message: "Donut (Target)", message_RU: "Бублик (таргет)" }],
+		"s-994-3000-122-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!" }],
 		"s-994-3000-125-0": [{ type: "text", sub_type: "message", message: "Bait (Puddle)", message_RU: "Байт (лужа)" }],
+		"s-994-3000-126-0": "s-994-3000-111-0",
+		"s-994-3000-127-0": "s-994-3000-112-0",
+		"s-994-3000-128-0": "s-994-3000-113-0",
+		"s-994-3000-130-0": "s-994-3000-116-0",
 		"s-994-3000-301-0": [
 			{ type: "text", sub_type: "message", message: "Line up the puddles to blue", message_RU: "Выстроить лужи к синему" },
 			{ type: "func", func: () => spawn_road(blue_vaccine_loc) }
@@ -77,6 +81,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => spawn_road(red_vaccine_loc) }
 		],
 		"s-994-3000-315-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" }],
-		"s-994-3000-316-0": "s-994-3000-315-0"
+		"s-994-3000-316-0": "s-994-3000-315-0",
+		"qb-994-3000-994064": [{ type: "text", sub_type: "message", message: "Give stun!", message_RU: "Дать стан!" }],
+		"qb-994-3000-994065": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!" }]
 	};
 };
