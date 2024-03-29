@@ -34,7 +34,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-994-1000-103-0": [
 			{ type: "text", sub_type: "message", message: "AOE Stun (Dodge)", message_RU: "АОЕ стан (эвейд)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, 40, null, 250, 0, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 125, null, 230, 0, 2000] }
 		],
 		"s-994-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Jump (Dodge)", message_RU: "Прыжок (эвейд)" },
