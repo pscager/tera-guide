@@ -39,7 +39,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-794-1000-103-0": [
 			{ type: "text", sub_type: "message", message: "AOE Stun (Dodge)", message_RU: "АОЕ стан (эвейд)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, 50, null, 260, 0, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 40, null, 250, 0, 2000] }
 		],
 		"s-794-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Jump (Dodge)", message_RU: "Прыжок (эвейд)" },
@@ -75,8 +75,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-794-3000-107-0": [{ type: "text", sub_type: "message", message: "Front (Dodge)", message_RU: "Удар вперед (эвейд)" }],
 		"s-794-3000-108-0": [{ type: "text", sub_type: "message", message: "Back (Dodge)", message_RU: "Удар назад (эвейд)" }],
 		"s-794-3000-104-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
-		"s-794-3000-111-0": [{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейф" }],
-		"s-794-3000-112-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейф" }],
+		"s-794-3000-111-0": [{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейв" }],
+		"s-794-3000-112-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейв" }],
 		"s-794-3000-113-0": [{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)" }],
 		"s-794-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (от него)" }],
 		"s-794-3000-122-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!" }],
