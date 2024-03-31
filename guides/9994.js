@@ -34,7 +34,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-994-1000-103-0": [
 			{ type: "text", sub_type: "message", message: "AOE Stun (Dodge)", message_RU: "АОЕ стан (эвейд)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, 125, null, 230, 0, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 125, null, 250, 0, 2000] }
 		],
 		"s-994-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Jump (Dodge)", message_RU: "Прыжок (эвейд)" },
@@ -102,7 +102,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-994-3000-111-0": [{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейв" }],
 		"s-994-3000-112-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейв" }],
 		"s-994-3000-113-0": [{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)" }],
-		"s-994-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (от него)" }],
+		"s-994-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (между)" }],
 		"s-994-3000-116-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-994-3000-118-0": [{ type: "text", sub_type: "message", message: "Back", message_RU: "Удар назад" }],
 		"s-994-3000-122-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!" }],
