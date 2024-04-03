@@ -56,7 +56,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-794-2000-112-0": [{ type: "text", sub_type: "message", message: "Bait (3 stones)", message_RU: "Байт (3 камня)" }],
 		"s-794-2000-106-0": [{ type: "text", sub_type: "message", message: "Bait (Rock)", message_RU: "Байт (глыба)" }],
 		"s-794-2000-307-0": [{ type: "text", sub_type: "message", message: "Stones", message_RU: "Камни" }],
-		"ae-0-0-9942006": [{ type: "text", sub_type: "message", message: "Stone on you", message_RU: "Камень на тебе", delay: 1000 }],
+		"ae-0-0-7942006": [{ type: "text", sub_type: "message", message: "Stone on you", message_RU: "Камень на тебе", delay: 1000 }],
 		"s-794-2000-117-0": [{ type: "text", sub_type: "message", message: "Inward Wave", message_RU: "Волна к нему", delay: 1000 }],
 		"s-794-2000-118-0": [{ type: "text", sub_type: "message", message: "Outward Wave", message_RU: "Волна от него" }],
 		"s-794-2000-114-0": [{ type: "text", sub_type: "message", message: "Together", message_RU: "Собраться" }],

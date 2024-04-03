@@ -9,6 +9,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let red_vaccine_loc = null;
 	let road_from_gameId = null;
 	let temperature_boss = null;
+	let have_buff = false;
 
 	function spawn_road(loc) {
 		const road_from_ent = entity.mobs[road_from_gameId];
@@ -81,12 +82,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-994-2000-113-0": [
 			{ type: "text", sub_type: "message", message: "Donut (In > Out)", message_RU: "Бублик (к нему > от него)", delay: 1500 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 225, 1500, 2000] },
-			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", delay: 3500 },
+			{ type: "text", sub_type: "message", message: "Out / Dodge", message_RU: "От него / Эвейд", delay: 3500 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 325, 3500, 3000] }
 		],
 		"s-994-2000-110-0": [{ type: "text", sub_type: "message", message: "Hit in dd", message_RU: "Удар в дд" }],
 
 		// 3 BOSS
+		"die": [{ type: "func", func: () => have_buff = false }],
 		"ns-994-3000": [{ type: "func", func: () => temperature_boss = null }],
 		"nd-994-3000": [
 			{ type: "stop_timers" },
@@ -113,10 +115,22 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Back | Front (Dodge)", message_RU: "Удар назад | Удар вперед (эвейд)", check_func: () => temperature_boss === "ice" }
 		],
 		"s-994-3000-104-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
-		"s-994-3000-111-0": [{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейв" }],
-		"s-994-3000-112-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейв" }],
-		"s-994-3000-113-0": [{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)" }],
-		"s-994-3000-114-0": [{ type: "text", sub_type: "message", message: "Donut (Out)", message_RU: "Бублик (между)" }],
+		"s-994-3000-111-0": [
+			{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейв", check_func: () => !have_buff },
+			{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейв", check_func: () => have_buff }
+		],
+		"s-994-3000-112-0": [
+			{ type: "text", sub_type: "message", message: "In Safe", message_RU: "Внутри сейв", check_func: () => !have_buff },
+			{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "Снаружи сейв", check_func: () => have_buff }
+		],
+		"s-994-3000-113-0": [
+			{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)", check_func: () => !have_buff },
+			{ type: "text", sub_type: "message", message: "Donut (Middle)", message_RU: "Бублик (между)", check_func: () => have_buff }
+		],
+		"s-994-3000-114-0": [
+			{ type: "text", sub_type: "message", message: "Donut (Middle)", message_RU: "Бублик (между)", check_func: () => !have_buff },
+			{ type: "text", sub_type: "message", message: "Donut (In)", message_RU: "Бублик (к нему)", check_func: () => have_buff }
+		],
 		"s-994-3000-116-0": [
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 90, 500, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, -90, 500, 0, 3000] },
@@ -144,6 +158,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-994-3000-315-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" }],
 		"s-994-3000-316-0": "s-994-3000-315-0",
+		"am-994-3000-9943045": [{ type: "func", func: () => have_buff = true }],
+		"am-994-3000-9943046": "am-994-3000-9943045",
+		"ar-0-0-9943046": [{ type: "func", func: () => have_buff = false }],
 		"qb-994-3000-994022": [{ type: "func", func: () => temperature_boss = "ice" }],
 		"qb-994-3000-994024": [{ type: "func", func: () => temperature_boss = "fire" }],
 		"qb-994-3000-994064": [{ type: "text", sub_type: "message", message: "Give stun!", message_RU: "Дать стан!" }],
