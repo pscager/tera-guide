@@ -49,7 +49,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			back_combo_time_diff = start - counter1_date;
 		}
 
-		if (prev == 1106 && curr == 1103 && time_diff < 1000) {
+		if (prev === 1106 && curr === 1103 && time_diff < 1000) {
 			handlers.text({
 				sub_type: "message",
 				message: "360"
@@ -59,7 +59,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			counter1_date = new Date();
 		} else if (prev === 1105 && curr === 1106 && counter === 1 && time_diff < 1500 && back_combo_time_diff < 1500) {
 			counter = 2;
-		} else if (prev === 1106 && curr === 1108 && counter == 2 && time_diff < 1000 && back_combo_time_diff < 2000) {
+		} else if (prev === 1106 && curr === 1108 && counter === 2 && time_diff < 1000 && back_combo_time_diff < 2000) {
 			attack_360 = true;
 			handlers.text({
 				sub_type: "message",
@@ -113,7 +113,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 8, 360, 0, 1500] }
 		];
 
-		if (skillid == 1401) {
+		if (skillid === 1401) {
 			if (boss_enraged) {
 				handlers.event(leftSafe);
 			} else {
@@ -777,9 +777,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-927-1314-0": [{ type: "func", func: secondboss_floor_event, args: [3, 6] }],
 		"s-981-927-1315-0": [{ type: "func", func: secondboss_floor_event, args: [6, 3] }],
 		//
-		"qb-981-4000-9981046": [{ type: "text", sub_type: "notification", message: "First: (Debuffs) Closest", message_RU: "[ДКБ] Первая: дебафф (ближние)" }], // Thank you... for this release...
-		"qb-981-4000-9981047": [{ type: "text", sub_type: "notification", message: "First: (Circles) Spread", message_RU: "[КБД] Первая: круги (отдельно)" }], // Beware the... red lightning...
-		"qb-981-4000-9981048": [{ type: "text", sub_type: "notification", message: "First: (Bombs) Gather + Cleanse", message_RU: "[БДК] Первая: бомбы (вместе + клинс)" }], // Beware the mark... of Lakan...
+		"qb-981-4000-9981046": [{ type: "text", sub_type: "notification", message: "First: Debuffs (Closest)", message_RU: "[ДКБ] Первая: дебафф (ближние)" }], // Thank you... for this release...
+		"qb-981-4000-9981047": [{ type: "text", sub_type: "notification", message: "First: Circles (Spread)", message_RU: "[КБД] Первая: круги (отдельно)" }], // Beware the... red lightning...
+		"qb-981-4000-9981048": [{ type: "text", sub_type: "notification", message: "First: Bombs (Gather + Cleanse)", message_RU: "[БДК] Первая: бомбы (вместе + клинс)" }], // Beware the mark... of Lakan...
 
 		// 3 BOSS
 		"nd-981-3000": [
@@ -787,14 +787,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" },
 			{ type: "func", func: reset_third_boss }
 		],
-		"s-981-3000-1130-0": [{ type: "text", sub_type: "message", message: "Stun" }],
+		"s-981-3000-1130-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 		//
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Red Donut", check_func: () => !thirdboss_soul_world && !thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Blue Donut", check_func: () => thirdboss_soul_world && !thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Red Donut (Double)", check_func: () => !thirdboss_soul_world && thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", check_func: () => thirdboss_soul_world && thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Red Donut", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && !thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Blue Donut", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && !thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Red Donut (Double)", message_RU: "Бублики x2 (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", message_RU: "Бублики x2 (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_fifty },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000] },
