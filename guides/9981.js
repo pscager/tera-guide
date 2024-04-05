@@ -861,7 +861,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => thirdboss_soul_world = true }
 		],
 		"s-981-3000-1140-0": [
-			{ type: "text", sub_type: "message", message: "Red Donuts", message_RU: "Бублики от него" },
+			{ type: "text", sub_type: "message", message: "Red Donuts", message_RU: "Бублики (от него > к нему)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 4500] },
@@ -870,7 +870,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-3000-2140-0": "s-981-3000-1140-0",
 		"s-981-3000-1146-0": [
-			{ type: "text", sub_type: "message", message: "Blue Donuts", message_RU: "Бублики к нему" },
+			{ type: "text", sub_type: "message", message: "Blue Donuts", message_RU: "Бублики (к нему > от него)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 4500] },
@@ -879,7 +879,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-3000-2146-0": "s-981-3000-1146-0",
 		"s-981-3000-1402-0": [
-			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Слип!!" },
+			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон!!" },
 			{ type: "func", func: () => thirdboss_soul_world = false }
 		],
 		"s-981-3000-1701-0": [{ type: "text", sub_type: "message", message: "Back + front", message_RU: "Назад + Вперед" }],
