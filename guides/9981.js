@@ -825,7 +825,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		], // let's see just how clever you are...
 		"qb-981-3000-98134": [
 			{ type: "func", func: () => afriad_mech_active = true },
-			{ type: "text", sub_type: "message", message: "Double Cones", message_RU: "Двойные конусы" }
+			{ type: "text", sub_type: "message", message: "Cone Front x2", message_RU: "Конус вперед x2" }
 		], //are_you_afraid_of_me
 		"s-981-3000-1131-0": [
 			{ type: "func", func: are_you_afraid_of_me, args: [1131] },
@@ -841,22 +841,22 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2102-0": "s-981-3000-1102-0",
 		"s-981-3000-2105-0": "s-981-3000-1105-0",
 		"s-981-3000-2117-0": "s-981-3000-1117-0",
-		"s-981-3000-1404-0": [{ type: "text", sub_type: "message", message: "(Debuffs) Closest", message_RU: "Дебафф (ближние)" }],
-		"s-981-3000-1405-0": [{ type: "text", sub_type: "message", message: "(Debuffs) Farthest", message_RU: "Дебафф (дальние)" }],
-		"s-981-3000-1301-0": [{ type: "text", sub_type: "message", message: "(Bombs) Gather + Cleanse", message_RU: "Бомбы (вместе!) + клинс" }],
-		"s-981-3000-1302-0": [{ type: "text", sub_type: "message", message: "(Bombs) Gather + No cleanse", message_RU: "Бомбы (вместе!) + без клинса" }],
-		"s-981-3000-3103-0": [{ type: "text", sub_type: "message", message: "(Circles) Spread", message_RU: "Круги (отдельно!)" }],
-		"s-981-3000-3105-0": [{ type: "text", sub_type: "message", message: "(Circles) Gather", message_RU: "Круги (вместе!)" }],
-		"s-981-3000-1136-0": [{ type: "text", sub_type: "message", message: "Claw", message_RU: "Когти" }],
-		"s-981-3000-1144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "Наружу" }],
-		"s-981-3000-1145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "Внутрь" }],
+		"s-981-3000-1404-0": [{ type: "text", sub_type: "message", message: "Debuffs (Closest)", message_RU: "Дебафф (ближние)" }],
+		"s-981-3000-1405-0": [{ type: "text", sub_type: "message", message: "Debuffs (Farthest)", message_RU: "Дебафф (дальние)" }],
+		"s-981-3000-1301-0": [{ type: "text", sub_type: "message", message: "Bombs (Gather + Cleanse)", message_RU: "Бомбы (вместе + клинс)" }],
+		"s-981-3000-1302-0": [{ type: "text", sub_type: "message", message: "Bombs (Gather + No cleanse)", message_RU: "Бомбы (вместе + без клинса)" }],
+		"s-981-3000-3103-0": [{ type: "text", sub_type: "message", message: "Circles (Spread)", message_RU: "Круги (отдельно)" }],
+		"s-981-3000-3105-0": [{ type: "text", sub_type: "message", message: "Circles (Gather)", message_RU: "Круги (вместе)" }],
+		"s-981-3000-1136-0": [{ type: "text", sub_type: "message", message: "Claw (Bait)", message_RU: "Когти (байт)" }],
+		"s-981-3000-1144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него" }],
+		"s-981-3000-1145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" }],
 		"s-981-3000-1240-0": [
 			{ type: "text", sub_type: "message", message: "Donuts", message_RU: "Бублики" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 350, 0, 6000] }
 		],
 		"s-981-3000-1401-0": [
-			{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс!!" },
-			{ type: "text", sub_type: "message", message: "Puddles! Puddles!", message_RU: "Лужи! Лужи!", delay: 1900 },
+			{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс" },
+			{ type: "text", sub_type: "message", message: "Puddles!", message_RU: "Лужи!", delay: 1900 },
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 15, 175, 1000, 7000] },
 			{ type: "func", func: () => thirdboss_soul_world = true }
 		],
@@ -879,7 +879,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-3000-2146-0": "s-981-3000-1146-0",
 		"s-981-3000-1402-0": [
-			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон!!" },
+			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон" },
 			{ type: "func", func: () => thirdboss_soul_world = false }
 		],
 		"s-981-3000-1701-0": [{ type: "text", sub_type: "message", message: "Back + front", message_RU: "Назад + Вперед" }],
@@ -890,8 +890,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-1152-0": [{ type: "text", sub_type: "message", message: "Stun + Back", message_RU: "Стан + Откид назад" }],
 		"s-981-3000-1152-1": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1900 }],
 		"s-981-3000-1138-0": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] }], // begone
-		"s-981-3000-2145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "Внутрь" }],
-		"s-981-3000-2144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "Наружу" }],
+		"s-981-3000-2145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" }],
+		"s-981-3000-2144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него" }],
 		"s-981-3000-2129-0": "s-981-3000-1129-0",
 		"s-981-3000-2113-0": "s-981-3000-1113-0",
 		"s-981-3000-2151-0": "s-981-3000-1151-0",
