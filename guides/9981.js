@@ -825,7 +825,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		], // let's see just how clever you are...
 		"qb-981-3000-98134": [
 			{ type: "func", func: () => afriad_mech_active = true },
-			{ type: "text", sub_type: "message", message: "Cone Front x2", message_RU: "Конус вперед x2" }
+			{ type: "text", sub_type: "message", message: "Cone x2", message_RU: "Конус x2" }
 		], //are_you_afraid_of_me
 		"s-981-3000-1131-0": [
 			{ type: "func", func: are_you_afraid_of_me, args: [1131] },
