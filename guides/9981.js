@@ -15,6 +15,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let prev_back_attack = 0;
 	let prev_date = 0;
 	let attack_360 = false;
+	let thirdboss_eye = false;
 
 	function boss_backattack_event() {
 		end_back_time = new Date() - back_time;
@@ -366,7 +367,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		if (skillid === 1105) {
 			run_mech_push_back = true;
 		} else if (run_mech_push_back) {
-			const msg = skillid === 1102 ? "In" : "Out";
+			const msg = skillid === 1102 ? "IN" : "OUT";
 			const msg_ru = skillid === 1102 ? "К нему" : "От него";
 
 			handlers.event([
@@ -388,11 +389,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		let msg_ru = "";
 
 		if (thirdboss_soul_world) {
-			msg = skillid === 1132 ? "Out + In" : "In + Out";
-			msg_ru = skillid === 1132 ? "От него + К нему" : "К нему + От него";
+			msg = skillid === 1132 ? "OUT > IN" : "IN > OUT";
+			msg_ru = skillid === 1132 ? "От него + К нему" : "К нему > От него";
 		} else {
-			msg = skillid === 1131 ? "Out + In" : "In + Out";
-			msg_ru = skillid === 1131 ? "От него + К нему" : "К нему + От него";
+			msg = skillid === 1131 ? "OUT > IN" : "IN > OUT";
+			msg_ru = skillid === 1131 ? "От него > К нему" : "К нему > От него";
 		}
 
 		handlers.event([
@@ -416,11 +417,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			let msg_ru = "";
 
 			if (thirdboss_soul_world) {
-				msg = skillid === 1132 ? "OUT + Blue Donuts" : "IN + Red Donuts";
-				msg_ru = skillid === 1132 ? "От него + Бублики к нему" : "К нему + Бублики от него";
+				msg = skillid === 1132 ? "OUT > IN > OUT" : "IN > OUT > IN";
+				msg_ru = skillid === 1132 ? "От него > К нему > От него" : "К нему > От него > К нему";
 			} else {
-				msg = skillid === 1131 ? "OUT + Blue Donuts" : "IN + Red Donuts";
-				msg_ru = skillid === 1131 ? "От него + Бублики к нему" : "К нему + Бублики от него";
+				msg = skillid === 1131 ? "OUT > IN > OUT" : "IN > OUT > IN";
+				msg_ru = skillid === 1131 ? "От него > К нему > От него" : "К нему > От него > К нему";
 			}
 
 			handlers.event([
@@ -439,6 +440,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		run_mech_active = false;
 		thirdboss_soul_world = false;
 		thirdboss_fifty = false;
+		thirdboss_eye = false;
 	}
 
 	return {
@@ -791,15 +793,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 		//
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Red Donut", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && !thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Blue Donut", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && !thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Red Donut (Double)", message_RU: "Бублики x2 (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_fifty },
-			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", message_RU: "Бублики x2 (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_fifty },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 8, 670, 0, 9000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 6, 830, 0, 9000] }
+			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && !thirdboss_fifty && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && !thirdboss_fifty && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_fifty && thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000], check_func: () => thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000], check_func: () => thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000], check_func: () => thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 8, 670, 0, 9000], check_func: () => thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 6, 830, 0, 9000], check_func: () => thirdboss_eye }
 		],
 		"s-981-3000-2116-0": "s-981-3000-1116-0",
 		"h-981-3000-99": [{ type: "func", func: () => thirdboss_fifty = false }],
@@ -861,7 +863,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => thirdboss_soul_world = true }
 		],
 		"s-981-3000-1140-0": [
-			{ type: "text", sub_type: "message", message: "Red Donuts", message_RU: "Бублики (от него > к нему)" },
+			{ type: "text", sub_type: "message", message: "Donuts (OUT > IN)", message_RU: "Бублики (от него > к нему)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 4500] },
@@ -870,7 +872,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-3000-2140-0": "s-981-3000-1140-0",
 		"s-981-3000-1146-0": [
-			{ type: "text", sub_type: "message", message: "Blue Donuts", message_RU: "Бублики (к нему > от него)" },
+			{ type: "text", sub_type: "message", message: "Donuts (IN > OUT)", message_RU: "Бублики (к нему > от него)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 4500] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 4500] },
@@ -897,6 +899,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2151-0": "s-981-3000-1151-0",
 		"s-981-3000-2152-0": "s-981-3000-1152-0",
 		"s-981-3000-2152-1": "s-981-3000-1152-1",
-		"s-981-3000-2138-0": "s-981-3000-1138-0"
+		"s-981-3000-2138-0": "s-981-3000-1138-0",
+		"ab-981-3000-201800": [{ type: "func", func: () => thirdboss_eye = true }],
+		"ad-981-3000-201800": [{ type: "func", func: () => thirdboss_eye = false }]
 	};
 };
