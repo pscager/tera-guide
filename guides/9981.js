@@ -372,7 +372,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			const msg_ru = skillid === 1102 ? "К нему" : "От него";
 
 			handlers.event([
-				{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru },
+				{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] }
 			]);
 
@@ -398,7 +398,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		handlers.event([
-			{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru }
+			{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false }
 		]);
 
 		afriad_mech_active = false;
@@ -911,7 +911,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2152-0": "s-981-3000-1152-0",
 		"s-981-3000-2152-1": "s-981-3000-1152-1",
 		"s-981-3000-2138-0": "s-981-3000-1138-0",
-		"ab-981-3000-15164": [{ type: "func", func: () => thirdboss_eye = true }],
-		"ad-981-3000-15164": [{ type: "func", func: () => thirdboss_eye = false }]
+		"s-981-3000-3102": [
+			{ type: "func", func: () => thirdboss_eye = true },
+			{ type: "func", func: () => thirdboss_eye = false, delay: 7000 }
+		]
 	};
 };
