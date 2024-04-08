@@ -911,7 +911,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2152-0": "s-981-3000-1152-0",
 		"s-981-3000-2152-1": "s-981-3000-1152-1",
 		"s-981-3000-2138-0": "s-981-3000-1138-0",
-		"s-981-3000-3102": [
+		"s-981-3000-3102-0": [
 			{ type: "func", func: () => thirdboss_eye = true },
 			{ type: "func", func: () => thirdboss_eye = false, delay: 7000 }
 		]
