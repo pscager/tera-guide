@@ -16,6 +16,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let prev_date = 0;
 	let attack_360 = false;
 	let thirdboss_eye = false;
+	let are_you_afraid_of_me_continue = false;
 
 	function boss_backattack_event() {
 		end_back_time = new Date() - back_time;
@@ -401,6 +402,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		]);
 
 		afriad_mech_active = false;
+		are_you_afraid_of_me_continue = true;
 	}
 
 	let clever_mech_active = false;
@@ -409,7 +411,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		if (!clever_mech_active) return;
 
 		if (skillid === 1102) {
-			handlers.event([{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка", delay: 900 }]);
+			handlers.event([{ type: "text", sub_type: "message", message: "Rotate", message_RU: "Разворот", delay: 900 }]);
 		}
 
 		if (skillid === 1131 || skillid === 1132) {
@@ -417,11 +419,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			let msg_ru = "";
 
 			if (thirdboss_soul_world) {
-				msg = skillid === 1132 ? "OUT > IN > OUT" : "IN > OUT > IN";
-				msg_ru = skillid === 1132 ? "От него > К нему > От него" : "К нему > От него > К нему";
+				msg = skillid === 1132 ? "OUT > Donuts (IN > OUT)" : "IN > Donuts (OUT > IN)";
+				msg_ru = skillid === 1132 ? "От него > Бублики (К нему > От него)" : "К нему > Бублики (От него > К нему)";
 			} else {
-				msg = skillid === 1131 ? "OUT > IN > OUT" : "IN > OUT > IN";
-				msg_ru = skillid === 1131 ? "От него > К нему > От него" : "К нему > От него > К нему";
+				msg = skillid === 1131 ? "OUT > Donuts (IN > OUT)" : "IN > Donuts (OUT > IN)";
+				msg_ru = skillid === 1131 ? "От него > Бублики (К нему > От него)" : "К нему > Бублики (От него > К нему)";
 			}
 
 			handlers.event([
@@ -441,6 +443,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		thirdboss_soul_world = false;
 		thirdboss_fifty = false;
 		thirdboss_eye = false;
+		are_you_afraid_of_me_continue = false;
 	}
 
 	return {
@@ -689,7 +692,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-2000-1139-0": "s-981-2000-1138-0",
 		"s-981-2000-1140-0": "s-981-2000-1138-0",
 		"s-981-2000-1141-0": "s-981-2000-1138-0",*/
-		"s-981-2000-1110-0": [{ type: "text", sub_type: "message", message: "Back Move", message_RU: "Рыыок назад" }],
+		"s-981-2000-1110-0": [{ type: "text", sub_type: "message", message: "Back Move", message_RU: "Рывок назад" }],
 		"s-981-2000-1111-0": [{ type: "text", sub_type: "message", message: "360 attack", message_RU: "Круговая" }],
 		"s-981-2000-1114-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Притяжка" }],
 		"s-981-2000-1115-0": [{ type: "text", sub_type: "message", message: "Circles", message_RU: "Круги" }],
@@ -793,15 +796,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 		//
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && !thirdboss_fifty && thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && !thirdboss_fifty && thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_fifty && thirdboss_eye },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000], check_func: () => thirdboss_eye },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000], check_func: () => thirdboss_eye },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000], check_func: () => thirdboss_eye },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 8, 670, 0, 9000], check_func: () => thirdboss_eye },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 6, 830, 0, 9000], check_func: () => thirdboss_eye }
+			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut x2 (Out > In > Out)", message_RU: "Бублики x2 (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut x2 (In > Out > In)", message_RU: "Бублики x2 (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 8, 670, 0, 9000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 6, 830, 0, 9000] }
 		],
 		"s-981-3000-2116-0": "s-981-3000-1116-0",
 		"h-981-3000-99": [{ type: "func", func: () => thirdboss_fifty = false }],
@@ -857,8 +860,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 350, 0, 6000] }
 		],
 		"s-981-3000-1401-0": [
-			{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс" },
-			{ type: "text", sub_type: "message", message: "Puddles!", message_RU: "Лужи!", delay: 1900 },
+			{ type: "text", sub_type: "message", message: "Wave (Dodge) > Plague/Regress", message_RU: "Волна (эвейд) > Регресс" },
+			{ type: "text", sub_type: "message", message: "Puddles! (Spread)", message_RU: "Лужи! (отдельно)", delay: 1900 },
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 15, 175, 1000, 7000] },
 			{ type: "func", func: () => thirdboss_soul_world = true }
 		],
@@ -881,7 +884,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-3000-2146-0": "s-981-3000-1146-0",
 		"s-981-3000-1402-0": [
-			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон" },
+			{ type: "text", sub_type: "message", message: "Wave (Dodge) > Sleep", message_RU: "Волна (эвейд) > Сон" },
 			{ type: "func", func: () => thirdboss_soul_world = false }
 		],
 		"s-981-3000-1701-0": [{ type: "text", sub_type: "message", message: "Back + front", message_RU: "Назад + Вперед" }],
@@ -892,15 +895,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-1152-0": [{ type: "text", sub_type: "message", message: "Stun + Back", message_RU: "Стан + Откид назад" }],
 		"s-981-3000-1152-1": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1900 }],
 		"s-981-3000-1138-0": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] }], // begone
-		"s-981-3000-2145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" }],
-		"s-981-3000-2144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него" }],
+		"s-981-3000-2145-0": [
+			{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему", check_func: () => !are_you_afraid_of_me_continue },
+			{ type: "text", sub_type: "message", message: "IN > OUT", message_RU: "К нему > От него", check_func: () => are_you_afraid_of_me_continue },
+			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue }
+		],
+		"s-981-3000-2144-0": [
+			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него", check_func: () => !are_you_afraid_of_me_continue },
+			{ type: "text", sub_type: "message", message: "OUT > IN", message_RU: "От него > К нему", check_func: () => are_you_afraid_of_me_continue },
+			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue }
+		],
 		"s-981-3000-2129-0": "s-981-3000-1129-0",
 		"s-981-3000-2113-0": "s-981-3000-1113-0",
 		"s-981-3000-2151-0": "s-981-3000-1151-0",
 		"s-981-3000-2152-0": "s-981-3000-1152-0",
 		"s-981-3000-2152-1": "s-981-3000-1152-1",
 		"s-981-3000-2138-0": "s-981-3000-1138-0",
-		"ab-981-3000-201800": [{ type: "func", func: () => thirdboss_eye = true }],
-		"ad-981-3000-201800": [{ type: "func", func: () => thirdboss_eye = false }]
+		"ab-981-3000-15164": [{ type: "func", func: () => thirdboss_eye = true }],
+		"ad-981-3000-15164": [{ type: "func", func: () => thirdboss_eye = false }]
 	};
 };
