@@ -898,12 +898,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2145-0": [
 			{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему", check_func: () => !are_you_afraid_of_me_continue },
 			{ type: "text", sub_type: "message", message: "IN > OUT", message_RU: "К нему > От него", check_func: () => are_you_afraid_of_me_continue },
-			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue }
+			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue, delay: 1000 }
 		],
 		"s-981-3000-2144-0": [
 			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него", check_func: () => !are_you_afraid_of_me_continue },
 			{ type: "text", sub_type: "message", message: "OUT > IN", message_RU: "От него > К нему", check_func: () => are_you_afraid_of_me_continue },
-			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue }
+			{ type: "func", func: () => are_you_afraid_of_me_continue = false, check_func: () => are_you_afraid_of_me_continue, delay: 1000 }
 		],
 		"s-981-3000-2129-0": "s-981-3000-1129-0",
 		"s-981-3000-2113-0": "s-981-3000-1113-0",
