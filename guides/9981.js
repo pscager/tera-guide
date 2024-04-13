@@ -1,6 +1,6 @@
 ﻿// Velik's Sanctuary (Hard) MT
 //
-// made by michengs / HSDN / vathsq / Calvary / ITunk
+// made by michengs / HSDN / vathsq / Calvary / ITunk / Vampic
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
@@ -415,20 +415,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		if (skillid === 1131 || skillid === 1132) {
-			let msg = "";
-			let msg_ru = "";
+			let msg = [];
+			let msg_ru = [];
 
 			if (thirdboss_soul_world) {
-				msg = skillid === 1132 ? "OUT > Donuts (IN > OUT)" : "IN > Donuts (OUT > IN)";
-				msg_ru = skillid === 1132 ? "От него > Бублики (К нему > От него)" : "К нему > Бублики (От него > К нему)";
+				msg = skillid === 1132 ? ["OUT", "Donuts (In > Out)"] : ["IN", "Donuts (Out > In)"];
+				msg_ru = skillid === 1132 ? ["От него", "Бублики (К нему > От него)"] : ["К нему", "Бублики (От него > К нему)"];
 			} else {
-				msg = skillid === 1131 ? "OUT > Donuts (IN > OUT)" : "IN > Donuts (OUT > IN)";
-				msg_ru = skillid === 1131 ? "От него > Бублики (К нему > От него)" : "К нему > Бублики (От него > К нему)";
+				msg = skillid === 1131 ? ["OUT", "Donuts (In > Out)"] : ["IN", "Donuts (Out > In)"];
+				msg_ru = skillid === 1131 ? ["От него", "Бублики (К нему > От него)"] : "К нему", ["Бублики (От него > К нему)"];
 			}
 
 			handlers.event([
-				{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false },
-				{ type: "text", sub_type: "message", message: msg, message_RU: msg_ru, delay: 2000 }
+				{ type: "text", sub_type: "message", message: msg[0], message_RU: msg_ru[0] },
+				{ type: "text", sub_type: "message", message: msg[1], message_RU: msg_ru[1], delay: 2000 }
 			]);
 
 			clever_mech_active = false;
@@ -796,10 +796,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 		//
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut x2 (Out > In > Out)", message_RU: "Бублики x2 (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
-			{ type: "text", sub_type: "message", message: "Donut x2 (In > Out > In)", message_RU: "Бублики x2 (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (Out > In)", message_RU: "Бублики (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_eye, delay: 400 },
+			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", check_func: () => !thirdboss_soul_world && thirdboss_eye, delay: 2000 },
+			{ type: "text", sub_type: "message", message: "Donut (In > Out)", message_RU: "Бублики (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_eye, delay: 400 },
+			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", check_func: () => thirdboss_soul_world && thirdboss_eye, delay: 2000 },
+			{ type: "text", sub_type: "message", message: "Donut x2 (Out > In)", message_RU: "Бублики x2 (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 400 },
+			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 2000 },
+			{ type: "text", sub_type: "message", message: "Donut x2 (In > Out)", message_RU: "Бублики x2 (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 400 },
+			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 2000 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000] },
