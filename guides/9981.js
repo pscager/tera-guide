@@ -796,14 +796,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 		//
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Donut (Out > In)", message_RU: "Бублики (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_eye, delay: 400 },
-			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", check_func: () => !thirdboss_soul_world && thirdboss_eye, delay: 2000 },
-			{ type: "text", sub_type: "message", message: "Donut (In > Out)", message_RU: "Бублики (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_eye, delay: 400 },
-			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", check_func: () => thirdboss_soul_world && thirdboss_eye, delay: 2000 },
-			{ type: "text", sub_type: "message", message: "Donut x2 (Out > In)", message_RU: "Бублики x2 (от него > к нему)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 400 },
-			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 2000 },
-			{ type: "text", sub_type: "message", message: "Donut x2 (In > Out)", message_RU: "Бублики x2 (к нему > от него)", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 400 },
-			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye, delay: 2000 },
+			{ type: "text", sub_type: "message", message: "Donut (Out > In > Out)", message_RU: "Бублики (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut (In > Out > In)", message_RU: "Бублики (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut x2 (Out > In > Out)", message_RU: "Бублики x2 (от него > к нему > от него)", check_func: () => !thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
+			{ type: "text", sub_type: "message", message: "Donut x2 (In > Out > In)", message_RU: "Бублики x2 (к нему > от него > к нему)", check_func: () => thirdboss_soul_world && thirdboss_fifty && !thirdboss_eye },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 195, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 345, 0, 9000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 41, 10, 515, 0, 9000] },
