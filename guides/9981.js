@@ -371,7 +371,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			const msg = skillid === 1102 ? "Soon: IN" : "Soon: OUT";
 			const msg_ru = skillid === 1102 ? "Скоро: К нему" : "Скоро: От него";
 
-			handlers.event([{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false }]);
+			handlers.event([{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru }]);
 
 			run_mech_active = false;
 			run_mech_push_back = false;
@@ -391,7 +391,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		msg_ru = skillid === id ? "Скоро: От него > К нему" : "Скоро: К нему > От него";
 
 		handlers.event([
-			{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false }
+			{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru }
 		]);
 
 		afriad_mech_active = false;
@@ -415,7 +415,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			msg = skillid === id ? "Soon: OUT | Donuts (IN > OUT)" : "Soon: IN | Donuts (OUT > IN)";
 			msg_ru = skillid === id ? "Скоро: От него | Бублики (К нему > От него)" : "Скоро: К нему | Бублики (От него > К нему)";
 
-			handlers.event([{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru, speech: false }]);
+			handlers.event([{ type: "text", sub_type: "notification", message: msg, message_RU: msg_ru }]);
 
 			clever_mech_active = false;
 		}
@@ -907,6 +907,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-3102-0": [
 			{ type: "func", func: () => thirdboss_eye = true },
 			{ type: "func", func: () => thirdboss_eye = false, delay: 10000 }
-		]
+		],
+		"s-981-3000-3202-0": "s-981-3000-3102-0"
 	};
 };
