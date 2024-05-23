@@ -90,6 +90,7 @@ id | Dungeon name | Название данжа
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9034 | Dreadspire | Жуткий шпиль страха
 9044 | Bahaar's Sanctum | Святилище Бахаара
+9050 | Rift's Edge (Hard) | Край Разлома (сложно)
 9053 | Kezzel's Gorge | Ущелье Кеззела
 9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
@@ -103,6 +104,7 @@ id | Dungeon name | Название данжа
 9720 | Antaroth's Abyss | Омут Антароса
 9735 | RK-9 Kennel | Ангар RK-9
 9739 | Red Refuge | Лагерь повстанцев
+9750 | Rift's Edge | Край Разлома
 9754 | Bathysmal Rise | Глубинный Храм
 9756 | Timescape | Хроноплоскость
 9757 | Akeron's Inferno | Акероново пекло
