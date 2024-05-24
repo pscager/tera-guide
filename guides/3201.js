@@ -151,6 +151,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 3, 1000, 0, 3000] }
 		],
-		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter Attack (Bait)", message_RU: "Конус вперед (байт)" }]
+		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter Attack (Bait)", message_RU: "Конус вперед (байт)" }],
+		"s-3201-2000-238-0": [
+			{ type: "text", sub_type: "message", message: "Out > In", message_RU: "От него > К нему" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] }
+		],
+		"s-3201-2000-239-0": [
+			{ type: "text", sub_type: "message", message: "In > Out", message_RU: "К нему > От него" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 3, 1000, 0, 3000] }
+		]
 	};
 };
