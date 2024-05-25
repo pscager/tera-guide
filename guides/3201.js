@@ -119,7 +119,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"am-3201-320126-32010224": [
 			{ type: "func", func: () => boss = 1 },
-			{ type: "text", delay: 52000, sub_type: "alert", message: "True Debuff in 5 seconds", message_RU: "Правда через 5 сек." },
+			{ type: "text", delay: 52000, sub_type: "notification", message: "True Debuff in 5 seconds", message_RU: "Правда через 5 сек." },
 			{ type: "event", delay: 80000, args: [
 				{ type: "func", check_func: () => boss === 1, func: () => boss = null },
 				{ type: "text", check_func: () => boss === 1, sub_type: "message", message_RU: "Смена дебаффа", message: "Debuff reload" }
@@ -127,13 +127,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"am-3201-2000-32010220": [
 			{ type: "func", func: () => { boss = 0; } },
-			{ type: "text", delay: 52000, sub_type: "alert", message: "False Debuff in 5 seconds", message_RU: "Ложь через 5 сек." },
+			{ type: "text", delay: 52000, sub_type: "notification", message: "False Debuff in 5 seconds", message_RU: "Ложь через 5 сек." },
 			{ type: "event", delay: 80000, args: [
 				{ type: "func", check_func: () => boss === 0, func: () => boss = null },
 				{ type: "text", check_func: () => boss === 0, sub_type: "message", message_RU: "Смена дебаффа", message: "Debuff reload" }
 			] }
 		],
-		"am-3201-320121-32010222": [{ type: "text", sub_type: "message", message: "Spike in 5 seconds", message_RU: "Шип через 5 сек." }],
+		"am-3201-320121-32010222": [{ type: "text", sub_type: "alert", message: "Spike in 5 seconds", message_RU: "Шип через 5 сек." }],
 		"h-3201-2000-81": [{ type: "text", sub_type: "message", message: "80%", message_RU: "Дебафф" }],
 		"h-3201-2000-76": [{ type: "text", sub_type: "message", message: "75%", message_RU: "Камни" }],
 		"s-3201-2000-108-0": [{ type: "text", sub_type: "message", message: "Back Attack!", message_RU: "Откид назад!" }],
