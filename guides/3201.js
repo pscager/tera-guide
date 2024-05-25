@@ -1,6 +1,6 @@
 // Gossamer Vault (Hard)
 //
-// made by michengs
+// made by michengs / ITunk
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	let boss = null;
@@ -133,6 +133,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				{ type: "text", check_func: () => boss === 0, sub_type: "message", message_RU: "Смена дебаффа", message: "Debuff reload" }
 			] }
 		],
+		"am-3201-320121-32010222": [{ type: "text", sub_type: "message", message: "Spike in 5 seconds", message_RU: "Шип через 5 сек." }],
 		"h-3201-2000-81": [{ type: "text", sub_type: "message", message: "80%", message_RU: "Дебафф" }],
 		"h-3201-2000-76": [{ type: "text", sub_type: "message", message: "75%", message_RU: "Камни" }],
 		"s-3201-2000-108-0": [{ type: "text", sub_type: "message", message: "Back Attack!", message_RU: "Откид назад!" }],
