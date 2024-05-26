@@ -1,6 +1,6 @@
 // Rift"s Edge (10-Person)
 //
-// made by michengs
+// made by michengs / ITunk
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
@@ -12,50 +12,45 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"s-750-1001-1102-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-750-1001-1105-0": [
-			{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО" },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 375, 100, 4000] }
-		],
-		"s-750-1001-1109-0": [{ type: "text", sub_type: "message", message: "Move out", message_RU: "Выйти" }],
-		"s-750-1001-1110-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1001-1115-0": [{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" }],
+		"s-750-1001-1116-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
 		"s-750-1001-2102-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-750-1001-2105-0": [
-			{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО" },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 375, 100, 4000] }
-		],
-		"s-750-1001-2109-0": [{ type: "text", sub_type: "message", message: "Move out", message_RU: "Выйти" }],
-		"s-750-1001-2110-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1001-2115-0": [{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" }],
+		"s-750-1001-2116-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
 
 		// 2 BOSS
 		"nd-750-1002": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"s-750-45016-1308-0": [
-			{ type: "text", sub_type: "message", message: "Circle of poison", message_RU: "Ядовитый круг" },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 375, 100, 6000] }
+		"s-750-1002-2113-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
+		"s-750-1002-1114-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
+		"s-750-1002-2114-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
+		"s-750-1002-1115-0": [{ type: "text", sub_type: "message", message: "Flying attack", message_RU: "Летающая атака" }],
+		"s-750-1002-2115-0": [{ type: "text", sub_type: "message", message: "Flying attack", message_RU: "Летающая атака" }],
+		"s-750-1002-1116-0": [{ type: "text", sub_type: "message", message: "a swarm of bees", message_RU: "Рой пчел" }],
+		"s-750-1002-2116-0": [{ type: "text", sub_type: "message", message: "a swarm of bees", message_RU: "Рой пчел" }],
+		"s-750-1002-1117-0": [{ type: "text", sub_type: "message", message: "Rise (Kaia)", message_RU: "Взлет (Кайя)" }],
+		"s-750-1002-2117-0": [{ type: "text", sub_type: "message", message: "Rise (Kaia)", message_RU: "Взлет (Кайя)" }],
+		"s-750-1002-1205-0": [
+			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
+			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
 		],
-		"s-750-1002-1107-0": [{ type: "text", sub_type: "message", message: "Flying attack", message_RU: "Летающая атака" }],
-		"s-750-1002-2107-0": [{ type: "text", sub_type: "message", message: "Flying attack", message_RU: "Летающая атака" }],
-		"s-750-1002-1108-0": [{ type: "text", sub_type: "message", message: "Overpower", message_RU: "Подавление" }],
-		"s-750-1002-2108-0": [{ type: "text", sub_type: "message", message: "Overpower", message_RU: "Подавление" }],
-		"s-750-1002-2104-0": [
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" },
-			{ type: "text", sub_type: "message", "delay": 3000, message: "Dodge", message_RU: "Эвейд" }
-		],
-		"s-750-1002-1104-0": [
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" },
-			{ type: "text", sub_type: "message", "delay": 3000, message: "Dodge", message_RU: "Эвейд" }
-		],
+		"s-750-1002-1210-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1002-2210-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
 
 		// 3 BOSS
 		"nd-750-1003": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"s-750-1003-1306-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО" }],
-		"s-750-1003-1309-0": [{ type: "text", sub_type: "message", message: "Broken shield", message_RU: "Сломать щит" }],
-		"s-750-1003-2301-0": [{ type: "text", sub_type: "message", message: "Hit Crystal column", message_RU: "Кристальная колонна" }],
-		"s-750-1003-2306-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО" }]
+		"s-750-1003-1107-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-2107-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-1115-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-2115-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-1313-0": [{ type: "text", sub_type: "message", message: "Column", message_RU: "Колонна" },
+			{ type: "text", sub_type: "message", delay: 8000, message: "Dodge", message_RU: "Эвейд" }
+		],
+		"s-750-1003-1315-0": [{ type: "text", sub_type: "message", message: "Broken shield", message_RU: "Сломать щит" }]
 	};
 };
