@@ -11,18 +11,41 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"s-750-1001-1102-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-750-1001-1115-0": [{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" }],
-		"s-750-1001-1116-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
-		"s-750-1001-2102-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-750-1001-2115-0": [{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" }],
-		"s-750-1001-2116-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1001-1102-0": [
+			{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 375, 0, 3300] }
+		],
+		"s-750-1001-1115-0": [
+			{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" },
+			{ type: "spawn", func: "vector", args: [553, 50, 75, 0, 700, 0, 1400] },
+			{ type: "spawn", func: "vector", args: [553, -50, 75, 0, 700, 0, 1400] }
+		],
+		"s-750-1001-1116-1": [
+			{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" },
+			{ type: "spawn", func: "vector", args: [553, 90, 125, 0, 1200, 0, 1600] },
+			{ type: "spawn", func: "vector", args: [553, 270, 125, 0, 1200, 0, 1600] }
+		],
+		"s-750-1001-2102-0": [
+			{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 375, 0, 2900] }
+		],
+		"s-750-1001-2115-0": [
+			{ type: "text", sub_type: "message", message: "Floor", message_RU: "Атака в пол" },
+			{ type: "spawn", func: "vector", args: [553, 25, 75, 0, 700, 0, 1200] },
+			{ type: "spawn", func: "vector", args: [553, -25, 75, 0, 700, 0, 1200] }
+		],
+		"s-750-1001-2116-1": [
+			{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" },
+			{ type: "spawn", func: "vector", args: [553, 90, 125, 0, 1200, 0, 1600] },
+			{ type: "spawn", func: "vector", args: [553, 270, 125, 0, 1200, 0, 1600] }
+		],
 
 		// 2 BOSS
 		"nd-750-1002": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
+		"s-750-1002-1113-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
 		"s-750-1002-2113-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
 		"s-750-1002-1114-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
 		"s-750-1002-2114-0": [{ type: "text", sub_type: "message", message: "Discarding", message_RU: "Три откида" }],
@@ -44,13 +67,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"s-750-1003-1107-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
-		"s-750-1003-2107-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-1107-2": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
+		"s-750-1003-2107-2": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
 		"s-750-1003-1115-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
 		"s-750-1003-2115-0": [{ type: "text", sub_type: "message", message: "Knock down", message_RU: "Опрокид" }],
-		"s-750-1003-1313-0": [{ type: "text", sub_type: "message", message: "Column", message_RU: "Колонна" },
+		"s-750-1003-1313-0": [
+			{ type: "text", sub_type: "message", message: "Column", message_RU: "Колонна" },
 			{ type: "text", sub_type: "message", delay: 8000, message: "Dodge", message_RU: "Эвейд" }
 		],
-		"s-750-1003-1315-0": [{ type: "text", sub_type: "message", message: "Broken shield", message_RU: "Сломать щит" }]
+		"s-750-1003-1315-0": [
+			{ type: "text", sub_type: "message", message: "Broken shield", message_RU: "Сломать щит", class_position: ["tank", "dps"] },
+			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
+			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
+		]
 	};
 };
