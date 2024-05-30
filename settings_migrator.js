@@ -88,58 +88,6 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 						settings[option] = oldsettings[option];
 				}
 				return settings;
-
-			case 1.16: // p102
-				remove([
-					"guides/3027.js",
-					"guides/3034.js",
-					"guides/3036.js",
-					"guides/3201.js",
-					"guides/3202.js",
-					"guides/3203.js",
-					"guides/9053.js",
-					"guides/9056.js",
-					"guides/9735.js",
-					"guides/9739.js",
-					"guides/9781.js",
-					"guides/9920.js",
-					"guides/9982.js"
-				]);
-				break;
-
-			case 1.17: // p108
-				remove([
-					"guides/3020.js",
-					"guides/3026.js",
-					"guides/3034.js",
-					"guides/3101.js",
-					"guides/3103.js",
-					"guides/3104.js",
-					"guides/3106.js",
-					"guides/3126.js",
-					"guides/3204.js",
-					"guides/9070.js",
-					"guides/9770.js",
-					"guides/9970.js"
-				]);
-				break;
-
-			case 1.18: // p114
-			case 1.19:
-				remove([
-					"guides/3023.js",
-					"guides/3030.js",
-					"guides/3041.js",
-					"guides/3044.js",
-					"guides/3102.js",
-					"guides/3104.js",
-					"guides/3107.js",
-					"guides/3205.js",
-					"guides/9044.js",
-					"guides/9780.js",
-					"guides/9982.js"
-				]);
-				break;
 		}
 
 		for (const option in oldsettings) {
