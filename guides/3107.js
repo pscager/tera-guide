@@ -1,6 +1,6 @@
 // Corrupted RK-9 Kennel
 //
-// made by michengs / HSDN
+// made by michengs / HSDN / ITunk
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	let orb_notice = true;
@@ -194,6 +194,25 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function thirdboss_seventy_event() {
 		boss_seventy = true;
 	}
+
+	dispatch.hook("S_START_ACTION_SCRIPT", "*", { order: -Infinity }, event => {
+		// Left hand
+		if (event.script === 3107005) {
+			if (mech_reverse) {
+				handlers.text({ sub_type: "notification", message: "Left soon...", message_RU: "Скоро левый..." }); // REVERSE (0) - Right safe
+			} else {
+				handlers.text({ sub_type: "notification", message: "Right soon...", message_RU: "Скоро правый..." }); // STANDARD (1) - Left safe
+			}
+		}
+		// Right hand
+		if (event.script === 3107006) {
+			if (mech_reverse) {
+				handlers.text({ sub_type: "notification", message: "Right soon...", message_RU: "Скоро правый..." }); // REVERSE (0) - Left safe
+			} else {
+				handlers.text({ sub_type: "notification", message: "Left soon...", message_RU: "Скоро левый..." }); // STANDARD (1) - Right safe
+			}
+		}
+	});
 
 	return {
 		// 1 BOSS
@@ -406,6 +425,42 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3107-3000-222-1": [{ type: "func", func: thirdboss_sattack_event, args: [2221] }],
 		"s-3107-3000-223-0": [{ type: "func", func: thirdboss_sattack_event, args: [2230] }],
 		"s-3107-3000-223-2": [{ type: "func", func: thirdboss_sattack_event, args: [2232] }],
+		//
+		// wings
+		"s-3107-3000-108-0": [{ type: "text", sub_type: "message", message: "Left", message_RU: "Левый" },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 20, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 12, 220, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 10, 300, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 8, 360, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 360, 400, 180, 800, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 100, 2000, true, null] }
+		],
+		"s-3107-3000-109-0": [{ type: "text", sub_type: "message", message: "Right", message_RU: "Правый" },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 20, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 12, 220, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 10, 300, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 8, 360, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 360, 400, 180, 800, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 100, 2000, true, null] }
+		],
+		"s-3107-3000-113-0": [{ type: "text", sub_type: "message", message: "Left", message_RU: "Левый" },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 20, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 12, 220, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 10, 300, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 8, 360, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 360, 400, 180, 800, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 100, 2000, true, null] }
+		],
+		"s-3107-3000-112-0": [{ type: "text", sub_type: "message", message: "Right", message_RU: "Правый" },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 20, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 12, 220, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 10, 300, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 8, 360, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 360, 400, 180, 800, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 100, 2000, true, null] }
+		],
+		//
+		"s-3107-3000-107-0": [{ type: "text", sub_type: "message", message: "Purple AOE", message_RU: "Фиолетовое АОЕ" }],
 		//
 		"s-3107-3000-125-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-3107-3000-126-0": [{ type: "text", sub_type: "message", message: "Front | Back", message_RU: "Удар вперед | Удар назад" }],
