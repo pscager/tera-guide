@@ -158,22 +158,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 
 	dispatch.hook("S_START_ACTION_SCRIPT", "*", { order: -Infinity }, event => {
-		dispatch._mod.command.message(event.script);
-
 		// Left hand
 		if (event.script === 3107005) {
 			if (mech_reverse) {
 				// (0) Right safe
 				handlers.event([
-					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф", class_position: ["heal", "dps"] },
-					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф", class_position: ["tank"] },
+					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф" },
 					{ type: "spawn", func: "marker", args: [false, 90, 300, 500, 3000, true, null] }
 				], boss_ent);
 			} else {
 				// (1) Left safe
 				handlers.event([
-					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф", class_position: ["heal", "dps"] },
-					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф", class_position: ["tank"] },
+					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф" },
 					{ type: "spawn", func: "marker", args: [false, 270, 300, 500, 3000, true, null] }
 				], boss_ent);
 			}
@@ -184,15 +180,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			if (mech_reverse) {
 				// (0) Left safe
 				handlers.event([
-					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф", class_position: ["heal", "dps"] },
-					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф", class_position: ["tank"] },
+					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф" },
 					{ type: "spawn", func: "marker", args: [false, 270, 300, 500, 3000, true, null] }
 				], boss_ent);
 			} else {
 				// (1) Right safe
 				handlers.event([
-					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф", class_position: ["heal", "dps"] },
-					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф", class_position: ["tank"] },
+					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф" },
 					{ type: "spawn", func: "marker", args: [false, 90, 300, 500, 3000, true, null] }
 				], boss_ent);
 			}
@@ -200,7 +194,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	});
 
 	return {
-		"ns-3107-3000": [{ type: "func", func: ent => boss_ent = ent }],
 		"nd-3107-3000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
@@ -210,8 +203,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "notification", message: "70%", message_RU: "70%" },
 			{ type: "func", func: () => boss_seventy = true }
 		],
-
-		// Test: 31071418 -> 31074334 -> 310704 -> 31075430 -> 310702
 
 		// Action announce
 		"dm-0-0-31071418": [{ type: "func", func: action_announce_mech_event, args: ["out"] }],
@@ -299,12 +290,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3107-3000-1129-0": [
 			{ type: "text", sub_type: "message", message: "Combo | Back Wave", message_RU: "Комба | Конус назад" },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 120, 1200, 2000, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] }
+			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] },
+			{ type: "func", func: ent => boss_ent = ent }
 		],
 		"s-3107-3000-1305-0": [
 			{ type: "text", sub_type: "message", message: "Combo | Back Wave", message_RU: "Комба | Конус назад" },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 120, 1200, 2000, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] }
+			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] },
+			{ type: "func", func: ent => boss_ent = ent }
 		],
 		"s-3107-3000-2102-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 		"s-3107-3000-2223-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
