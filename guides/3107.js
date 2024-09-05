@@ -319,16 +319,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ab-3107-3000-310700020": [{ type: "text", sub_type: "notification", message: "Ready for Orbs", message_RU: "Готовность к бомбам" }],
 
 		// Waves mech
-		"ab-3107-3000-310703401": [{ func: wave_attacks_event, args: ["left"] }],
-		"ab-3107-3000-310703403": [{ func: wave_attacks_event, args: ["left"] }],
-		"ab-3107-3000-310703405": [{ func: wave_attacks_event, args: ["left"] }],
-		"ab-3107-3000-310703407": [{ func: wave_attacks_event, args: ["left"] }],
-		"ab-3107-3000-310703408": [{ func: wave_attacks_event, args: ["left"] }],
-		"ab-3107-3000-310703402": [{ func: wave_attacks_event, args: ["right"] }],
-		"ab-3107-3000-310703404": [{ func: wave_attacks_event, args: ["right"] }],
-		"ab-3107-3000-310703406": [{ func: wave_attacks_event, args: ["right"] }],
-		"ab-3107-3000-310703409": [{ func: wave_attacks_event, args: ["right"] }],
-		"ab-3107-3000-3107034010": [{ func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703401": [{ type: "func", func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703403": [{ type: "func", func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703405": [{ type: "func", func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703407": [{ type: "func", func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703408": [{ type: "func", func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703402": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703404": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703406": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703409": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-3107034010": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
 
 		// Radar mech
 		"qb-3107-3000-31075430": [{ type: "text", sub_type: "message", message: "!!! Radar !!!", message_RU: "!!! Радар !!!" }],
