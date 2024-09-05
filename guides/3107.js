@@ -5,7 +5,6 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
-	let boss_ent = null;
 	let boss_seventy = false;
 	let msg_a = "unk";
 	let msg_b = "unk";
@@ -20,22 +19,24 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	};
 
 	function code_announce_mech_event(code) {
-		switch (code) {
-			case 1: // standard
-				mech_reverse = false;
-				print_mech(true, true);
-				if (mech_notice) {
-					print_mech(false, false);
-				}
-				break;
+		// Standard
+		if (code == 1) {
+			mech_reverse = false;
+			print_mech(true, true);
 
-			case 0: // reverse
-				mech_reverse = true;
-				print_mech(true, true);
-				if (mech_notice) {
-					print_mech(false, false);
-				}
-				break;
+			if (mech_notice) {
+				print_mech(false, false);
+			}
+		}
+
+		// Reverse
+		if (code == 0) {
+			mech_reverse = true;
+			print_mech(true, true);
+
+			if (mech_notice) {
+				print_mech(false, false);
+			}
 		}
 	}
 
@@ -157,41 +158,41 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
-	dispatch.hook("S_START_ACTION_SCRIPT", "*", { order: -Infinity }, event => {
+	function wave_attacks_event(side, ent) {
 		// Left hand
-		if (event.script === 3107005) {
+		if (side == "left") {
 			if (mech_reverse) {
 				// (0) Right safe
 				handlers.event([
 					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф" },
 					{ type: "spawn", func: "marker", args: [false, 90, 300, 500, 3000, true, null] }
-				], boss_ent);
+				], ent);
 			} else {
 				// (1) Left safe
 				handlers.event([
 					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф" },
 					{ type: "spawn", func: "marker", args: [false, 270, 300, 500, 3000, true, null] }
-				], boss_ent);
+				], ent);
 			}
 		}
 
 		// Right hand
-		if (event.script === 3107006) {
+		if (side == "right") {
 			if (mech_reverse) {
 				// (0) Left safe
 				handlers.event([
 					{ type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф" },
 					{ type: "spawn", func: "marker", args: [false, 270, 300, 500, 3000, true, null] }
-				], boss_ent);
+				], ent);
 			} else {
 				// (1) Right safe
 				handlers.event([
 					{ type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф" },
 					{ type: "spawn", func: "marker", args: [false, 90, 300, 500, 3000, true, null] }
-				], boss_ent);
+				], ent);
 			}
 		}
-	});
+	}
 
 	return {
 		"nd-3107-3000": [
@@ -230,10 +231,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"qb-3107-3000-310704": [{ type: "func", func: action_mech_event, args: ["wave"] }],
 
 		// S-attacks right
-		"s-3107-3000-1119-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
-		"s-3107-3000-1119-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-1119-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-1119-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-2114-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-2114-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-2114-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-2114-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1331-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
 		"s-3107-3000-1331-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1331-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
@@ -242,10 +243,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3107-3000-1107-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
 		"s-3107-3000-1107-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		//
-		"s-3107-3000-2114-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
-		"s-3107-3000-2114-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-2114-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-2114-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-1119-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-1119-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-1119-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
+		"s-3107-3000-1119-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1323-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
 		"s-3107-3000-1323-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1323-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
@@ -267,14 +268,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3107-3000-1112-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
 		"s-3107-3000-1112-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		//
-		"s-3107-3000-2116-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
-		"s-3107-3000-2116-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-2116-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-2116-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
 		"s-3107-3000-1307-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
+		"s-3107-3000-2116-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-2116-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
+		"s-3107-3000-2116-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
+		"s-3107-3000-2116-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-2118-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1127-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
 		"s-3107-3000-1127-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
@@ -290,14 +291,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3107-3000-1129-0": [
 			{ type: "text", sub_type: "message", message: "Combo | Back Wave", message_RU: "Комба | Конус назад" },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 120, 1200, 2000, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] },
-			{ type: "func", func: ent => boss_ent = ent }
+			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] }
 		],
 		"s-3107-3000-1305-0": [
 			{ type: "text", sub_type: "message", message: "Combo | Back Wave", message_RU: "Комба | Конус назад" },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 120, 1200, 2000, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] },
-			{ type: "func", func: ent => boss_ent = ent }
+			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] }
 		],
 		"s-3107-3000-2102-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 		"s-3107-3000-2223-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
@@ -317,6 +316,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 180, 300, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 270, 300, 0, 2000] }
 		],
+		"ab-3107-3000-310700020": [{ type: "text", sub_type: "notification", message: "Ready for Orbs", message_RU: "Готовность к бомбам" }],
+
+		// Waves mech
+		"ab-3107-3000-310703401": [{ func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703403": [{ func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703405": [{ func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703407": [{ func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703408": [{ func: wave_attacks_event, args: ["left"] }],
+		"ab-3107-3000-310703402": [{ func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703404": [{ func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703406": [{ func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703409": [{ func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-3107034010": [{ func: wave_attacks_event, args: ["right"] }],
 
 		// Radar mech
 		"qb-3107-3000-31075430": [{ type: "text", sub_type: "message", message: "!!! Radar !!!", message_RU: "!!! Радар !!!" }],
