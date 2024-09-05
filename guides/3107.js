@@ -11,6 +11,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let msg_b = "unk";
 	let mech_reverse = false;
 	let mech_notice = false;
+	let s_attacks_notice = true;
 
 	const mech_messages = {
 		"out": { message: "Out", message_RU: "От него" },
@@ -91,7 +92,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		});
 	}
 
-	function s_attacks_event(side, first_stage = false) {
+	function s_attacks_event(side) {
 		const delay = boss_seventy ? 2000 : 0;
 		let duration = boss_seventy ? 800 : 900;
 
@@ -103,7 +104,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.text({ sub_type: "message", delay: delay, message: "Left Safe", message_RU: "Слева сейф" });
 		}
 
-		if (first_stage && boss_seventy) { // <70%
+		if (s_attacks_notice && boss_seventy) { // <70%
 			if (mech_reverse) {
 				handlers.text({ sub_type: "message", message: "Triple-S | Out", message_RU: "Трипл-эска | От него" });
 				handlers.text({ sub_type: "notification", delay: 4500, message: "Out", message_RU: "От него" });
@@ -114,6 +115,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 			handlers.spawn({ func: "circle", args: [false, 445, 0, 0, 10, 300, 5000, 2000] });
 			duration = 2000;
+
+			s_attacks_notice = false;
+			dispatch.setTimeout(() => s_attacks_notice = true, 10000);
 		}
 
 		if (side == "left") { // right safe
@@ -232,53 +236,53 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"qb-3107-3000-310704": [{ type: "func", func: action_mech_event, args: ["wave"] }],
 
 		// S-attacks right
-		"s-3107-3000-2114-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-2114-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-2114-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-2114-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-2114-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-1331-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-1331-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1331-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1331-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1331-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1112-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-1107-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-1107-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1107-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		//
-		"s-3107-3000-1119-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-1119-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1119-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1119-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1119-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-1323-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-1323-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1323-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1323-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1323-3": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-1127-1": [{ type: "func", func: s_attacks_event, args: ["right"] }],
-		"s-3107-3000-2118-0": [{ type: "func", func: s_attacks_event, args: ["right", true] }],
+		"s-3107-3000-2118-0": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 		"s-3107-3000-2118-2": [{ type: "func", func: s_attacks_event, args: ["right"] }],
 
 		// S-attacks left
-		"s-3107-3000-1320-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-1320-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1320-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1320-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1320-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-1329-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-1329-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1329-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1329-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1329-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1107-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-1112-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-1112-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1112-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		//
-		"s-3107-3000-1307-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-1307-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1307-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-2116-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-2116-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-2116-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-2116-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-2116-3": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-2118-1": [{ type: "func", func: s_attacks_event, args: ["left"] }],
-		"s-3107-3000-1127-0": [{ type: "func", func: s_attacks_event, args: ["left", true] }],
+		"s-3107-3000-1127-0": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 		"s-3107-3000-1127-2": [{ type: "func", func: s_attacks_event, args: ["left"] }],
 
 		// Basic attacks
@@ -331,7 +335,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ab-3107-3000-310703404": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
 		"ab-3107-3000-310703406": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
 		"ab-3107-3000-310703409": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
-		"ab-3107-3000-3107034010": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
+		"ab-3107-3000-310703410": [{ type: "func", func: wave_attacks_event, args: ["right"] }],
 
 		// Radar mech
 		"qb-3107-3000-31075430": [{ type: "text", sub_type: "message", message: "!!! Radar !!!", message_RU: "!!! Радар !!!" }],
