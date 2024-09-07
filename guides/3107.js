@@ -1,6 +1,6 @@
 // Corrupted RK-9 Kennel
 //
-// made by michengs / HSDN / ITunk
+// made by michengs / HSDN / ITunk / vathsq
 
 const OPCODES = {
 	"S_DUNGEON_EVENT_GAGE": {
@@ -33,17 +33,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		["message", "string"]
 	]);
 
-	let boss_seventy = false;
-	let msg_a = "unk";
-	let msg_b = "unk";
-	let mech_reverse = false;
-	let mech_notice = false;
-	let s_attacks_notice = true;
-
 	const LEFT = 0;
 	const RIGHT = 1;
 	const UNKNOWN = -1;
-
 
 	const mech_messages = {
 		"out": { message: "Out", message_RU: "От него" },
@@ -51,6 +43,32 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"wave": { message: "Wave", message_RU: "Волна" },
 		"unk": { message: "?", message_RU: "?" }
 	};
+
+	let boss_seventy = false;
+	let msg_a = "unk";
+	let msg_b = "unk";
+	let mech_reverse = false;
+	let mech_notice = false;
+	let s_attacks_notice = true;
+	let wave_is_reverse = false;
+	let hand_glow_id = UNKNOWN;
+	let pizza_spawn_counter = 0;
+	let pizza_event_active = false;
+	let pizza_active_guide = false;
+
+	function start_boss_event() {
+		boss_seventy = false;
+		msg_a = "unk";
+		msg_b = "unk";
+		mech_reverse = false;
+		mech_notice = false;
+		s_attacks_notice = true;
+		wave_is_reverse = false;
+		hand_glow_id = UNKNOWN;
+		pizza_spawn_counter = 0;
+		pizza_event_active = false;
+		pizza_active_guide = false;
+	}
 
 	function code_announce_mech_event(code) {
 		// Standard
@@ -195,56 +213,47 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
-	let is_reverse = false;
-	let glowID
 	function wave_attacks_event() {
-		const duration = 4500;
+		let index = UNKNOWN;
+		const side = hand_glow_id;
 
 		const mech_message = {
 			0: [ // left safe
-				{ type: "spawn", func: "vector", args: [912, 360, 400, 180, 800, 0, duration] },
-				{ type: "spawn", func: "marker", args: [false, 300, 100, 0, duration, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 230, 100, 0, duration, true, null] },
+				// { type: "text", sub_type: "notification", message: "Left Safe", message_RU: "Слева сейф" },
+				{ type: "spawn", func: "vector", args: [912, 360, 400, 180, 800, 0, 4500] },
+				{ type: "spawn", func: "marker", args: [false, 300, 100, 0, 4500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 230, 100, 0, 4500, true, null] }
 			],
 			1: [ // right safe
-				{ type: "spawn", func: "vector", args: [912, 360, 400, 180, 800, 0, duration] },
-				{ type: "spawn", func: "marker", args: [false, 60, 100, 0, duration, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 130, 100, 0, duration, true, null] },
+				// { type: "text", sub_type: "notification", message: "Right Safe", message_RU: "Справа сейф" },
+				{ type: "spawn", func: "vector", args: [912, 360, 400, 180, 800, 0, 4500] },
+				{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 4500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 130, 100, 0, 4500, true, null] }
 			]
 		};
 
-		let index = -1;
-		let side = glowID;
 		if (side === LEFT) {
-			index = is_reverse ? 1 : 0;
+			index = wave_is_reverse ? 1 : 0;
 		} else if (side === RIGHT) {
-			index = is_reverse ? 0 : 1;
+			index = wave_is_reverse ? 0 : 1;
 		}
 
 		if (index === -1) return;
 
 		handlers.event(mech_message[index]);
-
-		glowID = UNKNOWN;
-
+		hand_glow_id = UNKNOWN;
 	}
 
-
-
-	let pizza_spawn_counter = 0;
-	let pizza_event_active = false;
-	let pizza_active_guide = false;
 	function laser_pizza_event() {
 		if (!pizza_active_guide) return;
 
 		if (pizza_spawn_counter >= 8) {
-			handlers.event([{
-				type: "spawn", func: "marker", args: [false, 0, (25 * 6), 0, 2000, false, null]
-			},])
-			return
+			handlers.spawn({ func: "marker", args: [false, 0, (25 * 6), 0, 2000, false, null] });
+			return;
 		}
 
 		pizza_spawn_counter++;
+
 		handlers.event([
 			// vertical
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 0, (25 * 10), 0, 4500] },
@@ -254,7 +263,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 270, (25 * 10), 0, 4500] }
 		]);
 	}
-
 
 	dispatch.hook("S_DUNGEON_EVENT_GAGE", 2, event => {
 		if (event.name === "ScanProgress") {
@@ -272,7 +280,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ns-3107-3003": [
 			{ type: "func", func: laser_pizza_event, check_func: () => pizza_event_active }
 		],
-		"h-3107-3000-99": [{ type: "func", func: () => boss_seventy = false }],
+		"h-3107-3000-99": [
+			{ type: "func", func: start_boss_event }
+		],
 		"h-3107-3000-70": [
 			{ type: "text", sub_type: "notification", message: "70%", message_RU: "70%" },
 			{ type: "func", func: () => boss_seventy = true }
@@ -280,23 +290,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Action announce
 		"dm-0-0-31071418": [{ type: "func", func: action_announce_mech_event, args: ["out"] }],
-		"dm-0-0-31071428": [{ type: "func", func: action_announce_mech_event, args: ["out"] }],
+		"dm-0-0-31071428": "dm-0-0-31071418",
 		"dm-0-0-31072104": [{ type: "func", func: action_announce_mech_event, args: ["in"] }],
-		"dm-0-0-31072166": [{ type: "func", func: action_announce_mech_event, args: ["in"] }],
+		"dm-0-0-31072166": "dm-0-0-31072104",
 		"dm-0-0-31073233": [{ type: "func", func: action_announce_mech_event, args: ["wave"] }],
-		"dm-0-0-31073235": [{ type: "func", func: action_announce_mech_event, args: ["wave"] }],
+		"dm-0-0-31073235": "dm-0-0-31073233",
 
 		// Code announce
 		"dm-0-0-31074334": [{ type: "func", func: code_announce_mech_event, args: [1] }],
-		"dm-0-0-31074359": [{ type: "func", func: code_announce_mech_event, args: [1] }],
-		"dm-0-0-31074642": [{ type: "func", func: code_announce_mech_event, args: [1] }],
-		"dm-0-0-31074104": [{ type: "func", func: code_announce_mech_event, args: [1] }],
-		"dm-0-0-31074398": [{ type: "func", func: code_announce_mech_event, args: [1] }],
+		"dm-0-0-31074359": "dm-0-0-31074334",
+		"dm-0-0-31074642": "dm-0-0-31074334",
+		"dm-0-0-31074104": "dm-0-0-31074334",
+		"dm-0-0-31074398": "dm-0-0-31074334",
 		"dm-0-0-31075430": [{ type: "func", func: code_announce_mech_event, args: [0] }],
-		"dm-0-0-31075984": [{ type: "func", func: code_announce_mech_event, args: [0] }],
-		"dm-0-0-31075986": [{ type: "func", func: code_announce_mech_event, args: [0] }],
-		"dm-0-0-31075064": [{ type: "func", func: code_announce_mech_event, args: [0] }],
-		"dm-0-0-31075464": [{ type: "func", func: code_announce_mech_event, args: [0] }],
+		"dm-0-0-31075984": "dm-0-0-31075430",
+		"dm-0-0-31075986": "dm-0-0-31075430",
+		"dm-0-0-31075064": "dm-0-0-31075430",
+		"dm-0-0-31075464": "dm-0-0-31075430",
 
 		// Action
 		"qb-3107-3000-310702": [{ type: "func", func: action_mech_event, args: ["out"] }],
@@ -365,7 +375,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Combo | Back Wave", message_RU: "Комба | Конус назад" },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 120, 1200, 2000, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 180, 40, 240, 1200, 2000, 3000] },
-			{ type: "func", func: () => is_reverse = mech_reverse }, // capture `mech_reverse` state as it might change by the time wave_attacks_event gets called
+			{ type: "func", func: () => wave_is_reverse = mech_reverse }, // capture `mech_reverse` state as it might change by the time wave_attacks_event gets called
 			{ type: "func", delay: 1000, func: wave_attacks_event }
 		],
 		"s-3107-3000-1305-0": "s-3107-3000-1129-0",
@@ -381,19 +391,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 180, 300, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 270, 300, 0, 2000] }
 		],
-		"ab-3107-3000-310700020": [{ type: "text", sub_type: "notification", message: "Lasers Soon", message_RU: "Готовность к бомбам" }],
+		"ab-3107-3000-310700020": [{ type: "text", sub_type: "notification", message: "Lasers Soon", message_RU: "Скоро лазеры" }],
 
 		// Waves mech
-		"ab-3107-3000-310703401": [{ type: "func", func: () => glowID = LEFT }],
+		"ab-3107-3000-310703401": [{ type: "func", func: () => hand_glow_id = LEFT }],
 		"ab-3107-3000-310703403": "ab-3107-3000-310703401",
 		"ab-3107-3000-310703405": "ab-3107-3000-310703401",
 		"ab-3107-3000-310703407": "ab-3107-3000-310703401",
 		"ab-3107-3000-310703408": "ab-3107-3000-310703401",
-		"ab-3107-3000-310703402": [{ type: "func", func: () => glowID = RIGHT }],
+		"ab-3107-3000-310703402": [{ type: "func", func: () => hand_glow_id = RIGHT }],
 		"ab-3107-3000-310703404": "ab-3107-3000-310703402",
 		"ab-3107-3000-310703406": "ab-3107-3000-310703402",
 		"ab-3107-3000-310703409": "ab-3107-3000-310703402",
 		"ab-3107-3000-310703410": "ab-3107-3000-310703402",
+
 		// Radar mech
 		"qb-3107-3000-31075430": [{ type: "text", sub_type: "message", message: "!!! Radar !!!", message_RU: "!!! Радар !!!" }],
 		"s-3107-3000-1118-0": [
@@ -412,18 +423,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => pizza_event_active = true },
 			{ type: "text", sub_type: "message", message: "LASERS", message_RU: "ЛАЗЕРЫ" },
 			{ type: "func", delay: 3000, func: () => pizza_event_active = false },
-			{ type: "func", delay: 3000, func: () => pizza_spawn_counter = 0 },
+			{ type: "func", delay: 3000, func: () => pizza_spawn_counter = 0 }
 		],
 		"s-3107-3000-1306-0": "s-3107-3000-1222-0",
 		"s-3107-3000-1223-0": "s-3107-3000-1222-0",
+
 		"laser-helper": [ // activate with `!guide event t laser-helper`
 			{
 				type: "func", func: () => {
-					pizza_active_guide = !pizza_active_guide
-					let msg_state = pizza_active_guide ? "enabled" : "disabled";
+					pizza_active_guide = !pizza_active_guide;
+					const msg_state = pizza_active_guide ? "enabled" : "disabled";
 					dispatch._mod.command.message(`lasers markers have been ${msg_state}`);
 				}
-			},
+			}
 		]
 	};
 };
