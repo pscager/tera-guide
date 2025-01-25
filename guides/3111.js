@@ -5,8 +5,8 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
-	const LEFT_SWORD_DOWN_ID = 1401
-	const RIGHT_SWORD_DOWN_ID = 1402
+	const LEFT_SWORD_DOWN_ID = 1401;
+	const RIGHT_SWORD_DOWN_ID = 1402;
 
 	let double_back_swipe_flag = 0b0000;
 	let phase_two = false;
@@ -83,7 +83,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	dispatch.hook("S_ACTION_STAGE", "*", event => {
 		if (event.templateId !== 1000 || phase_two) return;
 		let skillid = event.skill.id % 1000;
-		boss_backattack_event_new(skillid)
+		boss_backattack_event_new(skillid);
 	});
 
 
