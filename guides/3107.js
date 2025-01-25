@@ -67,7 +67,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		hand_glow_id = UNKNOWN;
 		pizza_spawn_counter = 0;
 		pizza_event_active = false;
-		pizza_active_guide = false;
 	}
 
 	function code_announce_mech_event(code) {
