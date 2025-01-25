@@ -79,6 +79,7 @@ id | Dungeon name | Название данжа
 3104 | Catalepticon | Сонный паралич Лукмии
 3106 | Killing Grounds | Место казни
 3107 | Corrupted RK-9 Kennel | Разрушенный Ангар РК-9
+3111 | The Veil (Darkan) | The Veil (Darkan)
 3123 | Akalath Quarantine (Hard) | Akalath Quarantine (Hard)
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
