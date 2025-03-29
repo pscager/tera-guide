@@ -39,11 +39,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", delay: 1400, message: "Dodge!", message_RU: "Эвейд!" }
 		],
 		"s-3101-1000-148-0": [
-			{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлет)" },
+			{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлёт)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 20, 150, 10, 320, 0, 4000] }
 		],
 		"s-3101-1000-149-0": [
-			{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлет)" },
+			{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлёт)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 340, 150, 10, 320, 0, 4000] }
 		],
 		"s-3101-1000-151-0": [{ type: "text", sub_type: "message", message: "Stun Attack!", message_RU: "Стан!" }],

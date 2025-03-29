@@ -24,7 +24,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 270, 30, -140, 600, 1000, 2000] }
 		],
 		"s-782-1000-108-0": [
-			{ type: "text", sub_type: "message", message: "Bait Front (Flying)", message_RU: "Байт вперед (подлет)" }
+			{ type: "text", sub_type: "message", message: "Bait Front (Flying)", message_RU: "Байт вперед (подлёт)" }
 		],
 		"s-782-1000-108-1": [
 			{ type: "spawn", func: "vector", args: [553, 90, 140, 5, 620, 0, 1500] },

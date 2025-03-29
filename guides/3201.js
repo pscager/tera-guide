@@ -85,11 +85,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 225, 300, 2500, 5000, true, null] } // 6
 		],
 		"s-3201-1000-148-0": [
-			{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлет)" },
+			{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлёт)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 20, 150, 10, 320, 0, 4000] }
 		],
 		"s-3201-1000-149-0": [
-			{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлет)" },
+			{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлёт)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 340, 150, 10, 320, 0, 4000] }
 		],
 		"s-3201-1000-151-0": [{ type: "text", sub_type: "message", message: "Stun Attack", message_RU: "Стан!" }],

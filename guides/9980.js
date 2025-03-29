@@ -76,7 +76,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-980-3000-307-0": "s-980-3000-306-0",
 		"s-980-3000-308-0": [
-			{ type: "text", sub_type: "message", message: "AOE (Flying)", message_RU: "АОЕ (подлет)" },
+			{ type: "text", sub_type: "message", message: "AOE (Flying)", message_RU: "АОЕ (подлёт)" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 4500 }
 		],
 		"s-980-3000-309-0": [
