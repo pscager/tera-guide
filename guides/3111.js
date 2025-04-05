@@ -1,4 +1,4 @@
-﻿// The Veil (Darkan)
+// The Veil (Darkan)
 //
 //
 
@@ -25,7 +25,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		if (event.gameId == boss_id && event.enraged && event.remainingEnrageTime == 36000) {
 			enrage_time = new Date();
 			enrage = true;
-			// handlers.event({ type: "text", sub_type: "message", message: "testreenrage", message_RU: ""});
+			// handlers.event({ type: "text", sub_type: "message", message: "testreenrage" });
 		}
 	});
 
@@ -34,9 +34,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			dispatch.clearTimeout(sword_timeout);
 			sword_counter++;
 			if (sword_counter >= 2 && skillid == 101) {
-				if (sword_counter == 2) handlers.event({ type: "text", sub_type: "message", message: "Back", message_RU: "" });
+				if (sword_counter == 2) handlers.event({ type: "text", sub_type: "message", message: "Back", message_RU: "Задняя" });
 				if (sword_counter == 3) {
-					handlers.event({ type: "text", sub_type: "message", message: "Double", message_RU: "" });
+					handlers.event({ type: "text", sub_type: "message", message: "Double", message_RU: "Двойная" });
 					swipes_active = true;
 					swipes_event_timeout = dispatch.setTimeout(() => {swipes_active = false; swipes_event_timeout = null; }, 3500);
 				}
@@ -57,7 +57,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			dispatch.clearTimeout(smash_timeout);
 			smash_counter++;
 			if (smash_counter >= 4 && skillid == 108) {
-				handlers.event({ type: "text", sub_type: "message", message: "Back X2-X3", message_RU: "" });
+				handlers.event({ type: "text", sub_type: "message", message: "Back X2-X3", message_RU: "Задняя X2-X3" });
 				smash_counter = 0;
 			}
 			smash_timeout = dispatch.setTimeout(() => { smash_counter = 0; smash_timeout = null; }, 1500);
@@ -67,11 +67,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			swipes_event_timeout = dispatch.setTimeout(() => { reverse = false; swipes_active = false; swipes_event_timeout = null; }, 6000);
 			if (last_smash == 105) {
 				reverse = true;
-				handlers.text({ sub_type: "notification", message: "X4 REVERSE", message_RU: "" });
+				handlers.text({ sub_type: "notification", message: "X4 REVERSE", message_RU: "X4 РЕВЕРС" });
 			}
 			if (last_smash == 108) {
 				reverse = false;
-				handlers.text({ sub_type: "notification", message: "X4 NORMAL", message_RU: "" });
+				handlers.text({ sub_type: "notification", message: "X4 NORMAL", message_RU: "X4 НОРМАЛ" });
 			}
 			last_smash = 0;
 		}
@@ -83,7 +83,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		swipes_active = true;
 		swipes_event_timeout = dispatch.setTimeout(() => { swipes_active = false; swipes_event_timeout = null; }, 7300);
 		triples_timeout = dispatch.setTimeout(() => {
-			handlers.text({ sub_type: "notification", message: "Triples Soon!", message_RU: "" });
+			handlers.text({ sub_type: "notification", message: "Triples Soon!", message_RU: "Скоро тройки!" });
 		}, 80000);
 	}
 
@@ -134,12 +134,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function cage_one() {
 		if (!reverse) {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "OUT - IN - OUT" },
+				{ type: "text", sub_type: "message", message: "OUT - IN - OUT", message_RU: "От него - К нему - От него" },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 250, 0, 7000] }
 			]);
 		} else {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "IN - OUT - IN" },
+				{ type: "text", sub_type: "message", message: "IN - OUT - IN", message_RU: "К нему - От него - К нему" },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 250, 0, 7000] }
 			]);
 		}
@@ -148,12 +148,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function cage_two() {
 		if (!reverse) {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "IN - OUT - IN" },
+				{ type: "text", sub_type: "message", message: "IN - OUT - IN", message_RU: "К нему - От него - К нему" },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 250, 0, 7000] }
 			]);
 		} else {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "OUT - IN - OUT" },
+				{ type: "text", sub_type: "message", message: "OUT - IN - OUT", message_RU: "От него - К нему - От него" },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 250, 0, 7000] }
 			]);
 		}
@@ -192,7 +192,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => enrage = false }
 		],
 		"dm-0-0-3111006": [
-			{ type: "text", sub_type: "message", message: "triples!", message_RU: "" },
+			{ type: "text", sub_type: "message", message: "Triples!", message_RU: "Тройки!" },
 			{ type: "func", func: tripleattack_event }
 		],
 		"s-3111-2000-1101-0": [{ type: "func", func: sword_event, args: [101] }],
@@ -205,26 +205,26 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3111-2000-1401-0": [{ type: "func", func: swipes_event, args: [1401] }],
 		"s-3111-2000-1402-0": [{ type: "func", func: swipes_event, args: [1402] }],
 		"s-3111-2000-1117-0": [
-			{ type: "text", class_position: "tank", sub_type: "message", message: "Tank Buster", message_RU: "" },
-			{ type: "text", sub_type: "message", message: "BUSTER SHOT!!!", message_RU: "", check_func: () => is_hp_49 || firstpizza }
+			{ type: "text", class_position: "tank", sub_type: "message", message: "Tank Buster", message_RU: "Танк" },
+			{ type: "text", sub_type: "message", message: "BUSTER SHOT!!!", message_RU: "ВЫСТРЕЛ!!!", check_func: () => is_hp_49 || firstpizza }
 		],
-		"s-3111-2000-1303-0": [{ type: "text", sub_type: "message", message: "Drill Attack", message_RU: "" }],
+		"s-3111-2000-1303-0": [{ type: "text", sub_type: "message", message: "Drill Attack", message_RU: "Крутилка" }],
 		"s-3111-2000-2115-0": [
-			{ type: "text", sub_type: "message", message: "TOGETHER!!!", message_RU: "" },
+			{ type: "text", sub_type: "message", message: "TOGETHER!!!", message_RU: "ВМЕСТЕ!!!" },
 			// { type: "text", sub_type: "message", delay: 1000, message: "3" },
 			// { type: "text", sub_type: "message", delay: 2000, message: "2" },
 			// { type: "text", sub_type: "message", delay: 3000, message: "1" },
-			{ type: "text", sub_type: "message", delay: 4000, message_RU: "", message: "Dodge" }
+			{ type: "text", sub_type: "message", delay: 4000, message: "Dodge", message_RU: "Эвейд" }
 		],
-		"s-3111-2000-1811-0": [{ type: "text", sub_type: "message", message: "SILENCE", message_RU: "" }],
+		"s-3111-2000-1811-0": [{ type: "text", sub_type: "message", message: "SILENCE", message_RU: "ТИШИНА" }],
 		"s-3111-2000-1807-0": [{ type: "func", func: cage_one }],
 		"s-3111-2000-1808-0": [
 			{ type: "func", func: cage_two },
-			{ type: "text", sub_type: "message", delay: 3000, message: "Cleanse", message_RU: "" }
+			{ type: "text", sub_type: "message", delay: 3000, message: "Cleanse", message_RU: "Клинс" }
 		],
 		"s-3111-2000-1809-0": [
 			{ type: "func", func: cage_two },
-			{ type: "text", sub_type: "message", delay: 3000, message: "Cleanse", message_RU: "" }
+			{ type: "text", sub_type: "message", delay: 3000, message: "Cleanse", message_RU: "Клинс" }
 		],
 		"s-3111-2000-1810-0": [{ type: "func", func: cage_one }],
 		"ae-0-0-31111001": [{ type: "func", func: () => reverse = true }],
@@ -238,20 +238,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3111-2000-2108-0": "s-3111-2000-1108-0",
 		"s-3111-2000-2111-0": "s-3111-2000-1111-0",
 		"s-3111-2000-2117-0": "s-3111-2000-1117-0",
-		"s-3111-675-675-0": [{ type: "text", sub_type: "message", message: "RESBAIT!!!", message_RU: "" }],
+		"s-3111-675-675-0": [{ type: "text", sub_type: "message", message: "RESBAIT!!!", message_RU: "БАЙТ!!!" }],
 		"s-3111-1023-1305-0": [{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 8, 250, 0, 2000] }],
 		"qb-3111-2000-31110002": [
-			{ type: "text", sub_type: "message", message: "PIZZA!!!", message_RU: "" },
+			{ type: "text", sub_type: "message", message: "PIZZA!!!", message_RU: "ПИЦЦА!!!" },
 			{ type: "func", func: () => firstpizza = true }
 		],
-		"s-3111-2000-1305-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "" }],
+		"s-3111-2000-1305-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 		"s-3111-2000-1304-0": [{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 8, 300, 0, 2400] }],
 		"s-3111-2000-3308-0": [
-			{ type: "text", sub_type: "message", message: "OUT", message_RU: "" },
+			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 8, 300, 0, 1500] }
 		],
 		"s-3111-2000-3309-0": [
-			{ type: "text", sub_type: "message", message: "IN", message_RU: "" },
+			{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 8, 300, 0, 1500] }
 		],
 		"s-3111-2000-3310-0": [{ type: "spawn", func: "marker", args: [false, -30, 300, 0, 1200, true, null] },
@@ -274,10 +274,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "3" },
 			{ type: "text", sub_type: "message", delay: 1000, message: "3" },
 			{ type: "text", sub_type: "message", delay: 2000, message: "2" },
-			{ type: "text", sub_type: "message", delay: 3200, message_RU: "", message: "Dodge" }
+			{ type: "text", sub_type: "message", delay: 3200, message: "Dodge", message_RU: "Эвейд" }
 		],
 		"s-3111-1000-1114-0": [
-			{ type: "text", sub_type: "message", message_RU: "", message: "Target Attack" },
+			{ type: "text", sub_type: "message", message: "Target Attack", message_RU: "Таргет" },
 			{ type: "spawn", func: "vector", args: [553, 90, 150, 0, 1300, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [553, 90, 75, 0, 1300, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 1300, 0, 2500] },
@@ -285,7 +285,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 270, 150, 0, 1300, 0, 2500] }
 		],
 		"s-3111-1000-1302-0": [
-			{ type: "text", sub_type: "message", message_RU: "АоЕ", message: "AOE" },
+			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 100, 6000] }
 		],
 		"s-3111-1000-1117-0": "s-3111-2000-1117-0",
