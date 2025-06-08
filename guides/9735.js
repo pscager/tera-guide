@@ -50,10 +50,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Get Out", message_RU: "От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 400, 0, 4000] }
 		],
-		"s-735-2000-305-0": [
-			{ type: "text", sub_type: "message", message: "In | Out", message_RU: "К нему | От него" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 3000] }
-		],
 		"s-735-2007-201-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 0, 500, 0, 4000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 90, 500, 0, 4000] },
@@ -80,8 +76,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-735-3000-116-0": [
 			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Справа сейф" },
-			{ type: "spawn", func: "marker", args: [false, 160, 300, 0, 900, true, null] },
-			{ type: "spawn", func: "marker", args: [false, 340, 300, 0, 900, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 160, 300, 0, 3000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 340, 300, 0, 3000, true, null] },
 			{ type: "spawn", func: "point", args: [553, 120, 250, 0, 3000] },
 			{ type: "spawn", func: "point", args: [553, 130, 240, 0, 3000] },
 			{ type: "spawn", func: "point", args: [553, 140, 230, 0, 3000] },
@@ -97,8 +93,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-735-3000-117-0": [
 			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Слева сейф" },
-			{ type: "spawn", func: "marker", args: [false, 20, 300, 0, 900, true, null] },
-			{ type: "spawn", func: "marker", args: [false, 200, 300, 0, 900, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 20, 300, 0, 3000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 200, 300, 0, 3000, true, null] },
 			{ type: "spawn", func: "vector", args: [553, 10, 210, 0, 290, 0, 3000] },
 			{ type: "spawn", func: "point", args: [553, 20, 210, 0, 3000] },
 			{ type: "spawn", func: "point", args: [553, 30, 220, 0, 3000] },
@@ -135,7 +131,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// Radar
 		"qb-735-3000-735312": [{ type: "text", sub_type: "message", message: "!!! Radar !!!", message_RU: "!!! Радар !!!" }],
 		"s-735-3000-324-0": [
-			{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО" },
+			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него" },
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 10, 250, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 12, 200, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 14, 150, 0, 3000] },
@@ -143,7 +139,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 912, 0, 0, 50, 50, 0, 3000] }
 		],
 		"s-735-3000-325-0": [
-			{ type: "text", sub_type: "message", message: "IN", message_RU: "К НЕМУ" },
+			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] }
 		]
 	};
