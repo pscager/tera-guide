@@ -74,7 +74,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 	
 	function range_check() {
-		enrage = new Date() - enrage_time >= 35100 ? 0 : 1;
+		enrage = new Date() - enrage_time >= 30100 ? 0 : 1;
 		if (enrage == 1) {
 			handlers.event([
 				{ type: "spawn", func: "circle", args: [true, 445, 0, 0, 10, 300, 200, 5000] },
@@ -201,7 +201,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// awaiting
 		"qb-2809-1000-2809112": [
 			{ type: "func", func: side, args: [112], delay: 2000 },
-			{ type: "func", func: () => color = "blue", delay: 6000 }
+			{ type: "func", func: () => color = "blue", delay: 60000 }
 		],
 		// standby
 		"qb-2809-1000-2809111": [
