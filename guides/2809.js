@@ -207,8 +207,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//Механика очистка
 		"qb-2809-1000-2809105": [{ type: "text", sub_type: "message", message: "Purging!", message_RU: "Очистка!" }],
 		"s-2809-1000-1304-0": [
-			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!", delay: 1500 },
-			{ type: "text", sub_type: "message", message: "Make a puddle with Res-byte!", message_RU: "Сделай лужу Рес-байтом!", class_position: "heal", delay: 3000 }
+			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!", delay: 1200 },
+			{ type: "text", sub_type: "message", message: "Make a puddle with Res-byte!", message_RU: "Сделай лужу Рес-байтом!", class_position: "heal", delay: 2500 }
 		],
 		
 		//Проверка дальности
