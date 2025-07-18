@@ -10,7 +10,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-454-1000-1101-0": [{ type: "text", sub_type: "message", message_RU: "Лево", message: "Left" }],
 		"s-454-1000-1102-0": [{ type: "text", sub_type: "message", message_RU: "Право", message: "Right" }],
 		"s-454-1000-1103-0": [{ type: "text", sub_type: "message", message_RU: "Удар головой!", message: "Head Slam!" }, //
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 200, 12, 275, 0, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 200, 12, 300, 0, 4000] }
 		],
 		"s-454-1000-1104-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка (медленно)", message: "Spin get out (Slow)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 200, 0, 5000] }
